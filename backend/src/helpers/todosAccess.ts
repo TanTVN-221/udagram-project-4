@@ -15,7 +15,7 @@ export class TodosAccess {
     private readonly docClient: DocumentClient = createDynamoDBClient(),
     private readonly todosTable = process.env.TODOS_TABLE,
     private readonly todoCreatedIndex = process.env.TODOS_CREATED_AT_INDEX
-  ) {}
+  ) { }
 
   async getAllTodos(userId: string): Promise<TodoItem[]> {
     logger.info('Getting all todos')

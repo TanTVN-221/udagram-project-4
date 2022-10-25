@@ -12,7 +12,13 @@ export const handler = middy(
     // TODO: Implement creating a new TODO item
     const userId = getUserId(event)
 
+    if (!newTodo.name.trim()) return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'You must enter todo name' })
+    }
+
     const newItem = await createTodo(userId, newTodo)
+
 
     return {
       statusCode: 200,

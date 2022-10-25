@@ -8,10 +8,13 @@ import { createLogger } from '../utils/logger'
 import * as uuid from 'uuid'
 // import * as createError from 'http-errors'
 import * as AWS from 'aws-sdk'
+import * as AWSXRay from 'aws-xray-sdk'
 
 const logger = createLogger('Todos business logic')
 
-const s3 = new AWS.S3({
+const XAWS = AWSXRay.captureAWS(AWS)
+
+const s3 = new XAWS.S3({
   signatureVersion: 'v4'
 })
 
